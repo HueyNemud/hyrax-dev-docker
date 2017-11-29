@@ -38,7 +38,7 @@ RUN gem install rails -v 5.0.6
 #&& gem install sqlite3 -v '1.3.13'
 
 #Enable cache busting to force cloning the Hyrax repository.
-ARG TAG=
+ARG TAG=v2.0.0
 ARG REV=1
 ARG BRANCH=
 #Install and build Hyrax
