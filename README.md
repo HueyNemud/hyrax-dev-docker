@@ -17,15 +17,17 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 1. Create a new container exposed on a port XXXX (so you'll be able to connect to http://localhost:XXXX):
 
-``docker run -v -p 3000:3000 --name hyrax-demo hyrax-demo``
+``docker run -p 3000:3000 --name hyrax-demo hyrax-demo``
 
-2. Once the container started, create the default admin sets and works (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
+2. You should already be ale to connect to Hyrax at http://localhst:3000
+
+3. Create the default admin sets and works (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
 
 ``docker exec -i hyrax-demo rake hyrax:default_admin_set:create hyrax:workflow:load``
 
 ``docker exec -i hyrax-demo rails generate hyrax:work DefaultWork``
 
-3. Hyrax is available  http://localhst:3000
+
 
 **Note** : The admin email admin@example.com is provided with this image. You will still have to create a user with this email on the Hyrax interface to gain admin permissions.
 
@@ -64,7 +66,7 @@ If you modified the Hyrax code and you want to test it in an isolated environmen
 
 For example:
 
-``docker run -v -p 3000:3000 -v /some/host/folder:/home/hyrax/hyrax --name hyrax-demo hyrax-demo``
+``docker run  -p 3000:3000 -v /some/host/folder:/home/hyrax/hyrax --name hyrax-demo hyrax-demo``
 
 Then copy (or clone) your code in `/some/host/folder`, install and deploy the application on the docker container (``docker exec -i bash -c "cd /home/hyrax/hyrax && bundle install && cd rake engine_cart:generate && cd hyrax/.internal_test_app"``)
 
