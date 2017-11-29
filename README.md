@@ -4,7 +4,7 @@ This docker image provides an isolated environment to build and run [Samvera/Hyr
 
 This image doesn't provide any way to persist the data stored in Hyrax and hence is not suitable for production.
 
-## Build and run
+## Getting started
 
 ### 1. Build
 
@@ -19,7 +19,7 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 ``docker run -p 3000:3000 --name hyrax-demo hyrax-demo``
 
-2. You should already be ale to connect to Hyrax at http://localhst:3000
+2. You should already be able to connect to Hyrax at http://localhost:3000
 
 3. Create the default admin sets and works (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
 
