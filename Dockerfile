@@ -21,7 +21,7 @@ RUN echo "deb http://ftp.uk.debian.org/debian jessie-backports main" >> /etc/apt
 
 # Install Fedora-commons
 RUN export JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.modeshape.configuration=classpath:/config/file-simple/repository.json -Dfcrepo.home=/mnt/fedora-data" \
-    && wget --no-check-certificate --quiet https://github.com/fcrepo4/fcrepo4/releases/download/fcrepo-4.7.4/fcrepo-webapp-4.7.4.war \
+    && wget --no-check-certificate https://github.com/fcrepo4/fcrepo4/releases/download/fcrepo-4.7.4/fcrepo-webapp-4.7.4.war \
     && mv fcrepo-webapp-4.7.4.war /var/lib/tomcat7/webapps
 
 #Create the startup script
