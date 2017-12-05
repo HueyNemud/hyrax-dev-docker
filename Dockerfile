@@ -1,12 +1,13 @@
 FROM ruby:2.4-slim
 
-#Install all prerequisites
+#Install all prerequisites (Install Redis 3.3.x. See https://github.com/rails/rails/issues/30527)
 RUN echo "deb http://ftp.uk.debian.org/debian jessie-backports main" >> /etc/apt/sources.list \
     && apt-get -qq update \
     && apt-get install -y -t jessie-backports wget \
+                                              zip \
                                               git \
                                               build-essential \
-                                              redis-server \
+                                              redis-server=3:3.2.8-2~bpo8+1 \
                                               ghostscript \
                                               imagemagick \
                                               libreoffice \
@@ -25,8 +26,11 @@ RUN export JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.modeshape.configuration=classpath:/c
     && mv fcrepo-webapp-4.7.4.war /var/lib/tomcat7/webapps
 
 #Create the startup script
-RUN echo '#!/bin/bash \n (solr_wrapper &) && (fcrepo_wrapper &) && rails server ; tail -f /dev/stdout' > /docker-entrypoint.sh \
+RUN echo '#!/bin/bash \n (solr_wrapper &) && (sleep 2 && fcrepo_wrapper &) && (start-stop-daemon --start --user hyrax --exec /usr/bin/redis-server &) && sleep 5 && rails server ; tail -f /dev/stdout' > /docker-entrypoint.sh \
     && chmod a+x /docker-entrypoint.sh
+
+#Start Redis on container startup
+RUN update-rc.d redis-server enable
 
 #Switch to a non-root user or Solr will refuse to start
 RUN useradd -ms /bin/bash hyrax
@@ -36,6 +40,13 @@ WORKDIR /home/hyrax
 #Install rails
 RUN gem install rails -v 5.0.6
 #&& gem install sqlite3 -v '1.3.13'
+
+#Install Fits
+RUN wget --quiet http://projects.iq.harvard.edu/files/fits/files/fits-1.0.5.zip \
+    && unzip fits-1.0.5.zip \
+    && mv fits-1.0.5 fits \
+    && chmod a+x fits/fits.sh
+ENV PATH="${PATH}:/home/hyrax/fits/"
 
 #Enable cache busting to force cloning the Hyrax repository.
 ARG TAG=
