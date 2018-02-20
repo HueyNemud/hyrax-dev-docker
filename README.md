@@ -21,7 +21,7 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 2. You should already be able to connect to Hyrax at http://localhost:3000
 
-3. Create the default admin sets and works (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
+3. Create the default admin set and work (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
 
 ``docker exec -i hyrax-demo rake hyrax:default_admin_set:create hyrax:workflow:load``
 
