@@ -10,7 +10,7 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 1. [Install Docker](https://docs.docker.com/engine/installation) (if not already installed).
 2. ``git clone https://github.com/HueyNemud/hyrax-dev-docker``
-3. Move to the cloned repo
+3. ``cd hyrax-dev-docker``
 4. ``docker build -t hyrax-demo . `` Note: This may take a while. Also, the final image might be huge (~2Gb).
 
 ### 2. Run
