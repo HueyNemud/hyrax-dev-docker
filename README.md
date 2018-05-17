@@ -16,7 +16,7 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 ### 2. Run
 
-1. Create a new container exposed on a port XXXX (so you'll be able to connect to http://localhost:XXXX):
+1. Create a new container: 
 
 ``docker run -p 3000:3000 --name hyrax-demo hyrax-demo``
 
@@ -33,6 +33,7 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 2. Sign up to you Hyrax instance with the email `admin@example.com`. This will create a new account with admin permissions.
 
 3. Log in. You're ready to play with Hyrax!
+
 
 ## Building a specific branch or tag
 
