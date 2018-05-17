@@ -28,7 +28,7 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 ### 3. Log in
 
-1. Go to http://localhost:3000
+1. Go to http://localhost:3000 (connecting for the first time can take a few seconds because Hyrax is initializing)  
 
 2. Sign up to you Hyrax instance with the email `admin@example.com`. This will create a new account with admin permissions.
 
