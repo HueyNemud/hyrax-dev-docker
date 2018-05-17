@@ -52,16 +52,24 @@ ENV PATH="${PATH}:/home/hyrax/fits/"
 ARG TAG=
 ARG REV=1
 ARG BRANCH=
-#Install and build Hyrax
+
+#Get Hyrax
 RUN git clone -b ${BRANCH:-master} https://github.com/samvera/hyrax \
     && cd ./hyrax \
-    && if [ -n "$TAG" ]; then git checkout tags/${TAG}; fi \ 
+    && if [ -n "$TAG" ]; then git checkout tags/${TAG}; fi
+
+#Set the locale to UTF-8 to prevent Bundler to fail when gemspecs contain non ASCII characters
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
+
+#Build and install Hyrax.
+RUN cd ./hyrax \
     && bundle install \
     && rake engine_cart:generate
 
 WORKDIR /home/hyrax/hyrax/.internal_test_app
 
-#Add a default administrator 
+#Add a default administrator
 COPY admin_role_map.yml config/role_map.yml
 
 EXPOSE  3000
