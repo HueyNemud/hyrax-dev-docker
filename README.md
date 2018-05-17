@@ -19,17 +19,19 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 ``docker run -p 3000:3000 --name hyrax-demo hyrax-demo``
 
-2. You should already be able to connect to Hyrax at http://localhost:3000
-
-3. Create the default admin set and work (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
+2. Create the default admin set and work (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
 
 ``docker exec -i hyrax-demo rake hyrax:default_admin_set:create hyrax:workflow:load``
 
 ``docker exec -i hyrax-demo rails generate hyrax:work DefaultWork``
 
+### 3. Log in
 
+1. Go to http://localhost:3000
 
-**Note** : The admin email admin@example.com is provided with this image. You will still have to create a user with this email on the Hyrax interface to gain admin permissions.
+2. Sign up to you Hyrax instance with the email `admin@example.com`. This will create a new account with admin permissions.
+
+3. Log in. You're ready to play with Hyrax!
 
 ## Building a specific branch or tag
 
