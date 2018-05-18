@@ -20,7 +20,7 @@ This image doesn't provide any way to persist the data stored in Hyrax and hence
 
 ``docker run -p 3000:3000 --name hyrax-demo hyrax-demo``
 
-2. Create the default admin set and work (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
+2. Open another bash session and create the default admin set and work (see the [Hyrax devlopment guide](https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide)):
 
 ``docker exec -i hyrax-demo rake hyrax:default_admin_set:create hyrax:workflow:load``
 
