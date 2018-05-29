@@ -1,7 +1,6 @@
-FROM ruby:2.6-rc-slim-stretch
+FROM ruby:2.5-slim-stretch
 
 #Install all prerequisites (Install Redis 3.3.x. See https://github.com/rails/rails/issues/30527)
-#RUN echo "deb http://ftp.uk.debian.org/debian jessie-backports main" >> /etc/apt/sources.list \
 RUN apt-get -qq update \
     && apt-get install -y --no-install-recommends  \
                                               wget \
