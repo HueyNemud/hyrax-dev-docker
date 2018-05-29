@@ -1,4 +1,4 @@
-FROM ruby:2.4-slim
+FROM ruby:2.4-slim-jessie
 
 #Install all prerequisites (Install Redis 3.3.x. See https://github.com/rails/rails/issues/30527)
 RUN echo "deb http://ftp.uk.debian.org/debian jessie-backports main" >> /etc/apt/sources.list \
