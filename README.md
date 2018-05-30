@@ -1,8 +1,6 @@
 # Dockerized Samvera/Hyrax dev. version
 
-This docker image provides an isolated environment to build and run [Samvera/Hyrax](https://github.com/samvera/hyrax) for demo purpose.
-
-This image doesn't provide any way to persist the data stored in Hyrax and hence is not suitable for production.
+Docker image providing an isolated environment to test features from the development version of [Samvera/Hyrax](https://github.com/samvera/hyrax). This image should never be used in a production environment.
 
 ## Getting started
 
